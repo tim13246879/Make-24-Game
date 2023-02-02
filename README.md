@@ -24,7 +24,7 @@ I solve.
   numbers 1, 1, 1, 1, since it is impossible to compute 24 with these four numbers using basic arithmetics.
 - AAU, I want to be given hints and/or solutions when I'm stuck.
 - AAU, I want to have a timer to tell me how fast I solved each problem.
-- AAU, I want to view my game history, which includes all the games I have played. For each past game, it should allow
+- AAU, I want every played game to be added to my game history, which should includes all the games I have played. For each past game, it should allow
   me to see the 4 random numbers, the method I used to solve the problem, and the hints/solutions that were given, if
   any. It should also show the amount of time required to solve the problem, as well as the date and time it was solved.
 - AAU, I want to classify my past games based on the amount of time it took me to solve. This can help me identify
