@@ -20,21 +20,25 @@ I solve.
 
 ## User Stories
 
-- As a user (AAU), I only want to attempt games that are solvable. For example, I do not want to be given the four
+### Essential
+- As a user (AAU), I only want to attempt games that are solvable. For example, I do not want to be given the four 
   numbers 1, 1, 1, 1, since it is impossible to compute 24 with these four numbers using basic arithmetics.
-- AAU, I want to be given hints and/or solutions when I'm stuck.
+- AAU, I want every played game to be added to my game history (add an arbitrary number of games to game history), which 
+  should include all the games I have played. 
+- AAU, I want to view the following for each game in the game history: the 4 random numbers, the method I used to arrive at 24,
+  and the amount of time I took. 
 - AAU, I want to have a timer to tell me how fast I solved each problem.
-- AAU, I want every played game to be added to my game history, which should includes all the games I have played. For each past game, it should allow
-  me to see the 4 random numbers, the method I used to solve the problem, and the hints/solutions that were given, if
-  any. It should also show the amount of time required to solve the problem, as well as the date and time it was solved.
+- AAU, I want to have two ways to sort/view my game history. Either based on date of completion or amount of time required to reach solution.
+
+### Extras
+- AAU, I want to be given hints and/or solutions when I'm stuck.
 - AAU, I want to classify my past games based on the amount of time it took me to solve. This can help me identify
   problems that are more difficult for me, which hints at my weaknesses as a competitive player.
 - AAU, I want to reattempt problems that took me long periods of time to solve in the past.
 - AAU, I want to be able to pause a game, and come back to it later.
 - AAU, while a game is paused, I want to be able to attempt other problems before I return to the paused game.
 - AAU, I want to be able to have multiple paused games.
-- AAU, I also want to play recreationally. I want my history in this mode to be separate from my competitive practice
-  mode.
 - AAU, I want to be able to delete games from my game history, and move one game from the history of one mode to the
   other. This will be helpful if I selected the wrong mode to play in and don't want the game histories of two modes to
   be mixed up.
+- AAU, I also want to play recreationally. I want my history in this mode to be separate from my competitive practice mode.
