@@ -11,32 +11,39 @@ public class Game {
     private int n2;
     private int n3;
     private int n4;
-    private float timeToSolve;
+    private double timeToSolve;
     private String solution;
     private LocalDateTime dateTime;
 
 
-    // EFFECTS: generate the 4 random numbers. Numbers should be between 1 and 13, inclusive, and needs to be solvable.
+    // MODIFIES: this
+    // EFFECTS: generate the 4 random numbers. Numbers should be between [1, 13]. The four numbers together should also
+    // be solvable. This means there needs to exist a way to compute 24 using the 4 numbers and basic arithmetics. If
+    // there is no way to do so, a new set of 4 numbers should be generated.
+    // !!! Note that since the isSolvable() method is incomplete, it is possible for the constructor to instantiate
+    // an unsolvable game. (An example would be if it generates 1, 1, 1, 1).
     public Game() {
         Random random = new Random();
-        n1 = random.nextInt(12) + 1;
-        n2 = random.nextInt(12) + 1;
-        n3 = random.nextInt(12) + 1;
-        n4 = random.nextInt(12) + 1;
-        if (!isSolvable()) {
-            new Game();
+        while (!isSolvable()) {
+            n1 = random.nextInt(12) + 1;
+            n2 = random.nextInt(12) + 1;
+            n3 = random.nextInt(12) + 1;
+            n4 = random.nextInt(12) + 1;
         }
     }
 
-    // REQUIRES:
     // EFFECTS: Produce true if the 4 numbers can be computed to 24 using the 4 basic arithmetics (+ - / *). Each number
     // must be used exactly once.
+    // !!! Note that this method is incomplete. A stub is in place to ensure the program runs.
     private boolean isSolvable() {
+        if (n1 == 0) {
+            return false;
+        }
         return true; //STUB
     }
 
-    // REQUIRES: n must be between 1 and 4, inclusive
-    // EFFECTS: get nth number. For example, if 1 is consumed, return n1, if 2 is consumed, return n2, and so on
+    // REQUIRES: n must be one of 1, 2, 3 or 4
+    // EFFECTS: get nth number. For example, if 1 is consumed, return n1, if 2 is consumed, return n2, and so on.
     public int get(int n) {
         if (n == 1) {
             return n1;
@@ -53,12 +60,12 @@ public class Game {
     // REQUIRES: time must be positive
     // MODIFIES: this
     // EFFECTS: set amount of time required by user to solve problem
-    public void setTimeToSolve(float timeToSolve) {
+    public void setTimeToSolve(double timeToSolve) {
         this.timeToSolve = timeToSolve;
     }
 
     // EFFECTS: return amount of time required by user to solve problem
-    public float getTimeToSolve() {
+    public double getTimeToSolve() {
         return timeToSolve;
     }
 
