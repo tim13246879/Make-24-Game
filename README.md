@@ -19,7 +19,7 @@ I solve.
 
 ## User Stories
 
-### Essential (realized in phase 1)
+### Essential (realized in phase 2)
 
 - As a user (AAU), I want every played game to be added to my game history (add an arbitrary number of games to game
   history), which should include all the games I have played.
@@ -28,8 +28,11 @@ I solve.
 - AAU, I want to know how fast I solved the problem after completing each game.
 - AAU, I want to have two ways of viewing my game history. Either based on date of completion or amount of time
   required to reach solution.
+- AAU, I want to have the option to save the game history when I quit the application.
+- AAU, I want to have the option to continue with my previous game history or to create a new game history when I open
+  the application and start a new game.
 
-### Extras (to be implemented after phase 1)
+### Extras (to be implemented after phase 2)
 
 - AAU, I only want to attempt games that are solvable. For example, I do not want to be given the four
   numbers 1, 1, 1, 1, since it is impossible to compute 24 with these four numbers using basic arithmetics.
