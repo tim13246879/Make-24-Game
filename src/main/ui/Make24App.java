@@ -4,22 +4,30 @@ package ui;
 
 import model.Game;
 import model.GameHistory;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Make24App {
-
+    private static final String JSON_STORE = "./data/gameHistory.json";
     private GameHistory gameHistory;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     // The structure of following code is from the AccountNotRobust program
 
     // EFFECTS: runs the make 24 application
-    public Make24App() {
+    public Make24App() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
@@ -57,6 +65,8 @@ public class Make24App {
         System.out.println("\nSelect from:");
         System.out.println("\tn -> new game");
         System.out.println("\th -> view history");
+        System.out.println("\ts -> save game history to file");
+        System.out.println("\tl -> load game history from file");
         System.out.println("\tq -> quit");
     }
 
@@ -67,6 +77,10 @@ public class Make24App {
             startNewGame();
         } else if (command.equals("h")) {
             viewHistory();
+        } else if (command.equals("s")) {
+            saveGameHistory();
+        } else if (command.equals("l")) {
+            loadGameHistory();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -388,6 +402,29 @@ public class Make24App {
         System.out.println("\t3. " + n3);
         System.out.println("\t4. " + n4);
         System.out.println("\nSelect the first number to operate on (only input 1, 2, 3 or 4)");
+    }
+
+    // EFFECTS: saves the game history to file
+    private void saveGameHistory() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(gameHistory);
+            jsonWriter.close();
+            System.out.println("Saved current game history to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads game history from file
+    private void loadGameHistory() {
+        try {
+            gameHistory = jsonReader.read();
+            System.out.println("Loaded previous game history from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 

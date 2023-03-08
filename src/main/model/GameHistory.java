@@ -2,12 +2,16 @@ package model;
 
 // Represents the game history with a list of games.
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class GameHistory {
+public class GameHistory implements Writable {
     ArrayList<Game> games;
 
     // EFFECTS: creates an empty list of games.
@@ -40,5 +44,23 @@ public class GameHistory {
     // EFFECTS: getter for list of games in game history
     public List<Game> getGames() {
         return games;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("games", gamesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray gamesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Game g : games) {
+            jsonArray.put(g.toJson());
+        }
+
+        return jsonArray;
     }
 }

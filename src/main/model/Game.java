@@ -3,10 +3,13 @@ package model;
 // Represents a game of make 24 with the 4 numbers, amount of time taken by user to compute 24, the solution
 // that the user uses to solve the problem, and the date and time of completion.
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDateTime;
 import java.util.Random;
 
-public class Game {
+public class Game implements Writable {
     private int n1;
     private int n2;
     private int n3;
@@ -30,6 +33,18 @@ public class Game {
             n3 = random.nextInt(12) + 1;
             n4 = random.nextInt(12) + 1;
         }
+    }
+
+    // EFFECTS: instantiates game with given fields
+    public Game(int n1, int n2, int n3, int n4, double timeToSolve, String solution, LocalDateTime dateTime) {
+        this.n1 = n1;
+        this.n2 = n2;
+        this.n3 = n3;
+        this.n4 = n4;
+        this.timeToSolve = timeToSolve;
+        this.solution = solution;
+        this.dateTime = dateTime;
+
     }
 
     // EFFECTS: Produce true if the 4 numbers can be computed to 24 using the 4 basic arithmetics (+ - / *). Each number
@@ -89,6 +104,19 @@ public class Game {
     // EFFECTS: get date the game was played
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("n1", n1);
+        json.put("n2", n2);
+        json.put("n3", n3);
+        json.put("n4", n4);
+        json.put("timeToSolve", timeToSolve);
+        json.put("solution", solution);
+        json.put("dateTime", dateTime);
+        return json;
     }
 
 

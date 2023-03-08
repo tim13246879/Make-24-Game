@@ -52,5 +52,4 @@ I solve.
 ## Other information about the project
 
 - This project, especially the ui package, is significantly inspired by the AccountNotRobust program.
-- The two classes ThreeNumbers and TwoNumbers and their tests are used to realize an unessential user story.
-  They play no part in phase 1.
+- The persistent package is significantly inspired by the JsonSerializationDemo.
