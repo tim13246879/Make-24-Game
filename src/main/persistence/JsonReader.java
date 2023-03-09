@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads game History from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -48,8 +48,8 @@ public class JsonReader {
         return gh;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: gh
+    // EFFECTS: parses games from JSON object and adds them to game History
     private void addGames(GameHistory gh, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("games");
         for (Object json : jsonArray) {

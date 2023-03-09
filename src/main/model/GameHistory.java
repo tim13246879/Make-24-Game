@@ -46,6 +46,7 @@ public class GameHistory implements Writable {
         return games;
     }
 
+    // EFFECTS: convert this game history object to a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -53,7 +54,7 @@ public class GameHistory implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns games in this game History as a JSON array
     private JSONArray gamesToJson() {
         JSONArray jsonArray = new JSONArray();
 

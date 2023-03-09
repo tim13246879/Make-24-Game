@@ -107,6 +107,7 @@ public class Game implements Writable {
         return dateTime;
     }
 
+    // EFFECTS: Compare two Game objects. Produce true if all their fields are the same.
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -121,11 +122,13 @@ public class Game implements Writable {
                 && Objects.equals(dateTime, game.dateTime);
     }
 
+    // EFFECTS: Override hashcode to ensure program runs as expected.
     @Override
     public int hashCode() {
         return Objects.hash(n1, n2, n3, n4, timeToSolve, solution, dateTime);
     }
 
+    // EFFECTS: Convert this game object to a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
