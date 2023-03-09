@@ -52,4 +52,5 @@ I solve.
 ## Other information about the project
 
 - This project, especially the ui package, is significantly inspired by the AccountNotRobust program.
-- The persistent package is significantly inspired by the JsonSerializationDemo.
+- The method of persisting data (including the persistent package and its test) is significantly inspired by the
+  JsonSerializationDemo.

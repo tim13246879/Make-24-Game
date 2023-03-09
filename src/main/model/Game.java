@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Random;
 
 public class Game implements Writable {
@@ -104,6 +105,21 @@ public class Game implements Writable {
     // EFFECTS: get date the game was played
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return n1 == game.n1 && n2 == game.n2 && n3 == game.n3 && n4 == game.n4
+                && Double.compare(game.timeToSolve, timeToSolve) == 0 && Objects.equals(solution, game.solution)
+                && Objects.equals(dateTime, game.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(n1, n2, n3, n4, timeToSolve, solution, dateTime);
     }
 
     @Override

@@ -1,0 +1,22 @@
+{
+    "games": [
+      {
+        "timeToSolve": 11,
+        "dateTime": "1111-01-01T01:01:01",
+        "n1": 4,
+        "n2": 4,
+        "solution": "ss1",
+        "n3": 3,
+        "n4": 5
+      },
+      {
+        "dateTime": "2222-02-02T02:02:02",
+        "timeToSolve": 15,
+        "n1": 2,
+        "n2": 5,
+        "solution": "ss2",
+        "n3": 1,
+        "n4": 9
+      }
+    ]
+}
