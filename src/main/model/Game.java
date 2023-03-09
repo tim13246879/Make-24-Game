@@ -53,7 +53,7 @@ public class Game implements Writable {
     // !!! Note that this method is incomplete. A stub is in place to ensure the program runs.
     private boolean isSolvable() {
         if (n1 == 0) {
-            return false;
+            return false; // STUB
         }
         return true; //STUB
     }
@@ -109,8 +109,12 @@ public class Game implements Writable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Game game = (Game) o;
         return n1 == game.n1 && n2 == game.n2 && n3 == game.n3 && n4 == game.n4
                 && Double.compare(game.timeToSolve, timeToSolve) == 0 && Objects.equals(solution, game.solution)
