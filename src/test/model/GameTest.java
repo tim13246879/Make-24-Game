@@ -28,14 +28,14 @@ class GameTest {
     @BeforeEach
     private void setup() {
         g = new Game();
-        g1 = new Game(1, 2, 3, 4, 10, "s1", LocalDateTime.now());
-        g2 = new Game(1, 2, 3, 4, 10, "s1", LocalDateTime.now());
-        g3 = new Game(2, 2, 3, 4, 10, "s1", LocalDateTime.now());
-        g4 = new Game(1, 5, 3, 4, 10, "s1", LocalDateTime.now());
-        g5 = new Game(1, 2, 9, 4, 10, "s1", LocalDateTime.now());
-        g6 = new Game(1, 2, 3, 2, 10, "s1", LocalDateTime.now());
-        g7 = new Game(1, 2, 3, 4, 10.1, "s1", LocalDateTime.now());
-        g8 = new Game(1, 2, 3, 4, 10, "ss1", LocalDateTime.now());
+        g1 = new Game(1, 2, 3, 4, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g2 = new Game(1, 2, 3, 4, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g3 = new Game(2, 2, 3, 4, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g4 = new Game(1, 5, 3, 4, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g5 = new Game(1, 2, 9, 4, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g6 = new Game(1, 2, 3, 2, 10, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g7 = new Game(1, 2, 3, 4, 10.1, "s1", LocalDateTime.of(3, 3, 3, 3, 3));
+        g8 = new Game(1, 2, 3, 4, 10, "ss1", LocalDateTime.of(3, 3, 3, 3, 3));
         g9 = new Game(1, 2, 3, 4, 10, "s1", LocalDateTime.of(1, 1, 1, 1, 1));
         g10 = new Game(10, 4, 1, 9, 18, "s22", LocalDateTime.of(22, 3, 1, 11, 10));
     }

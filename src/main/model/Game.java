@@ -18,7 +18,8 @@ public class Game implements Writable {
     private double timeToSolve;
     private String solution;
     private LocalDateTime dateTime;
-
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 500;
 
     // MODIFIES: this
     // EFFECTS: generate the 4 random numbers. Numbers should be between [1, 13]. The four numbers together should also
@@ -142,5 +143,19 @@ public class Game implements Writable {
         return json;
     }
 
+    public int getN1() {
+        return n1;
+    }
 
+    public int getN2() {
+        return n2;
+    }
+
+    public int getN3() {
+        return n3;
+    }
+
+    public int getN4() {
+        return n4;
+    }
 }
