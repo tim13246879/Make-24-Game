@@ -143,19 +143,4 @@ public class Game implements Writable {
         return json;
     }
 
-    public int getN1() {
-        return n1;
-    }
-
-    public int getN2() {
-        return n2;
-    }
-
-    public int getN3() {
-        return n3;
-    }
-
-    public int getN4() {
-        return n4;
-    }
 }

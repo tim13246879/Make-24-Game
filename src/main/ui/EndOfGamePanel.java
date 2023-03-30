@@ -70,7 +70,7 @@ public class EndOfGamePanel extends JPanel {
 
     // EFFECTS: return all four numbers
     private String fourNumbers() {
-        return "(" + game.getN1() + " " + game.getN2() + " " + game.getN3() + " " + game.getN4() + ") -> ";
+        return "(" + game.get(1) + " " + game.get(2) + " " + game.get(3) + " " + game.get(4) + ") -> ";
     }
 
     public void setThreeRemainingNumbers(List<Double> threeRemainingNumbers) {

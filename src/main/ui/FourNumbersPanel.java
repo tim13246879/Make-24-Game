@@ -51,10 +51,10 @@ public class FourNumbersPanel extends JPanel {
     // MODIFIES: n1, n2, n3, n4, this
     // EFFECTS: instantiate buttons
     private void initializeButtons() {
-        n1 = new JButton(Integer.toString(game.getN1()));
-        n2 = new JButton(Integer.toString(game.getN2()));
-        n3 = new JButton(Integer.toString(game.getN3()));
-        n4 = new JButton(Integer.toString(game.getN4()));
+        n1 = new JButton(Integer.toString(game.get(1)));
+        n2 = new JButton(Integer.toString(game.get(2)));
+        n3 = new JButton(Integer.toString(game.get(3)));
+        n4 = new JButton(Integer.toString(game.get(4)));
         addBackToMenuButton();
     }
 
