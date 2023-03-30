@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class EndOfGamePanel extends JPanel {
@@ -20,19 +21,29 @@ public class EndOfGamePanel extends JPanel {
     private String solution;
     private CardLayout cl;
     private JPanel panelCont;
+    private long timeToSolve;
     
     private JButton saveGame;
     private JButton toMenu;
 
-    public EndOfGamePanel(Game game, CardLayout cl, JPanel panelCont) {
+    public EndOfGamePanel(Game game, CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.game = game;
         setVisible(false);
         this.cl = cl;
         this.panelCont = panelCont;
+        this.gameHistory = gameHistory;
     }
 
-    public void setUpScreen() {
+    private void updateGameAndGameHistory() {
+        game.setDateTime(startTime);
+        game.setSolution(solution);
+        game.setTimeToSolve(timeToSolve);
+        gameHistory.addGame(game);
+    }
+
+    public void setUpEndScreen() {
         solution = outputSolution();
+        timeToSolve = ChronoUnit.SECONDS.between(startTime, endTime);
         setUpButtonsAndLabels();
     }
 
@@ -61,12 +72,12 @@ public class EndOfGamePanel extends JPanel {
         this.twoRemainingNumbers = twoRemainingNumbers;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setStartTime() {
+        startTime = LocalDateTime.now();
     }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setEndTime() {
+        endTime = LocalDateTime.now();
     }
 
     public void setUpButtonsAndLabels() {
@@ -75,6 +86,7 @@ public class EndOfGamePanel extends JPanel {
         toMenu = new JButton("back to menu");
         add(saveGame);
         add(toMenu);
+        add(new JLabel("elapsed time: " + timeToSolve + " seconds"));
         addButtonFunctions();
     }
 
@@ -82,7 +94,8 @@ public class EndOfGamePanel extends JPanel {
         saveGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                updateGameAndGameHistory();
+                cl.show(panelCont, "menu");
             }
         });
         toMenu.addActionListener(new ActionListener() {

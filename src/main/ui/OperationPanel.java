@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,8 +86,8 @@ public class OperationPanel extends JPanel {
             if (resultNumber != 24) {
                 cl.show(panelCont, "4numbers");
             } else {
-                endScreen.setEndTime(LocalDateTime.now());
-                endScreen.setUpButtonsAndLabels();
+                endScreen.setEndTime();
+                endScreen.setUpEndScreen();
                 cl.show(panelCont, "end screen");
             }
         }

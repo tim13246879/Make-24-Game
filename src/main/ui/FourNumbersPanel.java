@@ -1,12 +1,12 @@
 package ui;
 
 import model.Game;
+import model.GameHistory;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class FourNumbersPanel extends JPanel {
     private EndOfGamePanel endScreen;
 
 
-    public FourNumbersPanel(CardLayout cl, JPanel panelCont) {
+    public FourNumbersPanel(CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.cl = cl;
         this.panelCont = panelCont;
         game = new Game();
@@ -32,9 +32,9 @@ public class FourNumbersPanel extends JPanel {
         addAllButtonsToRemainingButtons();
         addButtonsToPanel();
         addFunctionForAllButtons();
-        endScreen = new EndOfGamePanel(game, cl, panelCont);
+        endScreen = new EndOfGamePanel(game, cl, panelCont, gameHistory);
         panelCont.add(endScreen, "end screen");
-        endScreen.setStartTime(LocalDateTime.now());
+        endScreen.setStartTime();
     }
 
     private void addFunctionForAllButtons() {
@@ -49,6 +49,19 @@ public class FourNumbersPanel extends JPanel {
         n2 = new JButton(Integer.toString(game.getN2()));
         n3 = new JButton(Integer.toString(game.getN3()));
         n4 = new JButton(Integer.toString(game.getN4()));
+        addBackToMenuButton();
+    }
+
+    private void addBackToMenuButton() {
+        JButton backToMenu = new JButton("Try another problem (back to menu)");
+        add(backToMenu);
+        backToMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cl.show(panelCont, "menu");
+                resetPanel();
+            }
+        });
     }
 
     private void addAllButtonsToRemainingButtons() {

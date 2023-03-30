@@ -21,8 +21,8 @@ I solve.
 
 ### Essential (realized in phase 2)
 
-- As a user (AAU), I want every played game to be added to my game history (add an arbitrary number of games to game
-  history), which should include all the games I have played.
+- As a user (AAU), I want to have the option to add any completed game to the game history (add an arbitrary number of
+  games to game history).
 - AAU, I want to view the following for each game in the game history: the 4 random numbers, the method I used to arrive
   at 24, the amount of time I took, and the time and date of completion.
 - AAU, I want to know how fast I solved the problem after completing each game.
@@ -54,3 +54,25 @@ I solve.
 - This project, especially the ui package, is significantly inspired by the AccountNotRobust program.
 - The method of persisting data (including the persistent package and its test) is significantly inspired by the
   JsonSerializationDemo.
+
+## Instructions for Grader - Phase 3
+
+- (*LOCATE VISUAL*) The visual is an image with the four arithmetic operations, and is found as soon as the program runs
+  alongside the
+  buttons on the start menu.
+- Since this program involves playing a game (solving a problem), the grader must play the game and complete it
+  before adding "multiple X's to a Y". The steps to playing the game is as follows:
+    - From the start menu, first click "new game".
+    - 4 numbers will be presented.
+    - Before clicking on any button, solve the problem (try to compute 24 using each number exactly once).
+      Alternatively, to save time, use http://24solver.us-west-2.elasticbeanstalk.com/ to come up with the solution.
+    - Note that it is possible for there to be no solution. In that case, click "try another problem (back to menu)" to
+      head back to the menu. Then click "new game" again to start new game.
+    - If a solution to the problem is found, start clicking through the numbers and operations to arrive at 24.
+- (*GENERATE FIRST REQUIRED ACTION*) Once a game is complete (24 is computed), to "add multiple Xs to a Y", click "save
+  game" to save the game to game history.
+- (*GENERATE SECOND REQUIRED ACTION*) from start menu, click "view history by date" or "view history by time to solve"
+  to sort "Xs" in "Y" in two different ways and displays the "Xs".
+- (*SAVE DATA*) from start menu, click "save game history".
+- (*RELOAD DATA*) from start menu, click "load game history".
+

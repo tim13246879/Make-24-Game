@@ -1,6 +1,7 @@
 package ui;
 
 import model.Game;
+import model.GameHistory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ public class Make24GUI {
     private JFrame frame;
     private JPanel panelCont;
     private CardLayout cl;
+    private GameHistory gameHistory;
 
 
 
@@ -20,7 +22,10 @@ public class Make24GUI {
         cl = new CardLayout();
         panelCont.setLayout(cl);
 
-        panelCont.add(new MenuPanel(cl, panelCont), "menu");
+        gameHistory = new GameHistory();
+
+
+        panelCont.add(new MenuPanel(cl, panelCont, gameHistory), "menu");
         cl.show(panelCont, "menu");
 
         frame.add(panelCont);
