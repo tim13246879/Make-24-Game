@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents panel when 3 numbers remain
 public class ThreeNumbersPanel extends JPanel {
 
     private JButton n1;
@@ -19,6 +20,7 @@ public class ThreeNumbersPanel extends JPanel {
     private List<Double> previousNumbers;
     private EndOfGamePanel endScreen;
 
+    // EFFECTS: construct panel with all buttons
     public ThreeNumbersPanel(CardLayout cl, JPanel panelCont, List<Double> remainingNumbers, EndOfGamePanel endScreen) {
         this.cl = cl;
         this.panelCont = panelCont;
@@ -30,30 +32,41 @@ public class ThreeNumbersPanel extends JPanel {
         this.endScreen = endScreen;
     }
 
+    // MODIFIES: n1, n2, n3
+    // EFFECTS: add action listener to all functions
     private void addFunctionForAllButtons() {
         addButtonFunctions(n1);
         addButtonFunctions(n2);
         addButtonFunctions(n3);
     }
 
+    // MODIFIES: n1, n2, n3, this
+    // EFFECTS: instantiate buttons
     private void initializeButtons() {
         n1 = new JButton(previousNumbers.get(0).toString());
         n2 = new JButton(previousNumbers.get(1).toString());
         n3 = new JButton(previousNumbers.get(2).toString());
     }
 
+    // MODIFIES: remainingButtons
+    // EFFECTS: Add all number buttons to remainingButtons
     private void addAllButtonsToRemainingButtons() {
         remainingButtons.add(n1);
         remainingButtons.add(n2);
         remainingButtons.add(n3);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add all buttons to panel
     private void addButtonsToPanel() {
         for (JButton b: remainingButtons) {
             add(b);
         }
     }
 
+    // EFFECTS: take in a button that is pressed. If it is the first one to be pressed in this panel, turn it invisible
+    // and add text to verify it has been pressed. Otherwise, if it is the second one that is pressed, show operation
+    // panel.
     private void addButtonFunctions(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override

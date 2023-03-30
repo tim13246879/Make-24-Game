@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+// Represents panel that shows up when a game is complete
 public class EndOfGamePanel extends JPanel {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -26,6 +27,7 @@ public class EndOfGamePanel extends JPanel {
     private JButton saveGame;
     private JButton toMenu;
 
+    // EFFECTS: construct panel and sets game and game history.
     public EndOfGamePanel(Game game, CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.game = game;
         setVisible(false);
@@ -34,6 +36,8 @@ public class EndOfGamePanel extends JPanel {
         this.gameHistory = gameHistory;
     }
 
+    // MODIFIES: game, gameHistory
+    // EFFECTS: update game with start time, solution, and time to solve, and add game to game history
     private void updateGameAndGameHistory() {
         game.setDateTime(startTime);
         game.setSolution(solution);
@@ -41,25 +45,30 @@ public class EndOfGamePanel extends JPanel {
         gameHistory.addGame(game);
     }
 
+    // EFFECTS: set up elements of end screen, including all buttons and labels, solution, and time to solve
     public void setUpEndScreen() {
         solution = outputSolution();
         timeToSolve = ChronoUnit.SECONDS.between(startTime, endTime);
         setUpButtonsAndLabels();
     }
 
+    // EFFECTS: return solution in this form: (n1 n2 n3 n4) -> (m1 m2 m3) -> (x1 x2) -> 24
     private String outputSolution() {
         return fourNumbers() + threeNumbers() + twoNumbers() + "24";
     }
 
+    // EFFECTS: return final two numbers
     private String twoNumbers() {
         return "(" + twoRemainingNumbers.get(0) + " " + twoRemainingNumbers.get(1) + ") -> ";
     }
 
+    // EFFECTS: return final three numbers
     private String threeNumbers() {
         return "(" + threeRemainingNumbers.get(0) + " "
                 + threeRemainingNumbers.get(1) + " " + threeRemainingNumbers.get(2) + ") -> ";
     }
 
+    // EFFECTS: return all four numbers
     private String fourNumbers() {
         return "(" + game.getN1() + " " + game.getN2() + " " + game.getN3() + " " + game.getN4() + ") -> ";
     }
@@ -80,6 +89,8 @@ public class EndOfGamePanel extends JPanel {
         endTime = LocalDateTime.now();
     }
 
+    // MODIFIES: saveGame, toMenu, this
+    // EFFECTS: instantiate buttons and add to this
     public void setUpButtonsAndLabels() {
         add(new JLabel("You got it!"));
         saveGame = new JButton("save game");
@@ -90,6 +101,8 @@ public class EndOfGamePanel extends JPanel {
         addButtonFunctions();
     }
 
+    // MODIFIES: saveGame, toMenu
+    // EFFECTS: add Action listener to each button
     private void addButtonFunctions() {
         saveGame.addActionListener(new ActionListener() {
             @Override

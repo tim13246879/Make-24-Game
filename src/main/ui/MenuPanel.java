@@ -17,6 +17,7 @@ import java.io.IOException;
 
 import static java.lang.System.exit;
 
+// Represents the main menu panel
 public class MenuPanel extends JPanel {
 
 
@@ -36,6 +37,8 @@ public class MenuPanel extends JPanel {
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/gameHistory.json";
 
+    // MODIFIES: game, gameHistory
+    // EFFECTS: construct menu with buttons
     public MenuPanel(CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.cl = cl;
         this.panelCont = panelCont;
@@ -51,6 +54,7 @@ public class MenuPanel extends JPanel {
         addImage();
     }
 
+    // EFFECTS: add image to panel
     private void addImage() {
         BufferedImage myPicture = null;
         try {
@@ -62,7 +66,8 @@ public class MenuPanel extends JPanel {
         add(picLabel);
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: instantiate all buttons with their names
     private void initializeButtons() {
         newGameButton = new JButton("New Game");
         viewHistoryByDateButton = new JButton("View History By Date");
@@ -72,6 +77,8 @@ public class MenuPanel extends JPanel {
         quitButton = new JButton("Quit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: add all buttons to this panel
     private void initializePanel() {
         setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
         add(newGameButton);
@@ -82,8 +89,7 @@ public class MenuPanel extends JPanel {
         add(quitButton);
     }
 
-
-
+    // EFFECTS: setup action listeners for all buttons
     public void setUpAllActionListeners() {
         setUpNewGameButton();
         setUpViewHistoryByDateButton();
@@ -93,6 +99,7 @@ public class MenuPanel extends JPanel {
         setUpQuitButton();
     }
 
+    // EFFECTS: Exit program if quitButton is pressed
     private void setUpQuitButton() {
         quitButton.addActionListener(new ActionListener() {
             @Override
@@ -102,6 +109,7 @@ public class MenuPanel extends JPanel {
         });
     }
 
+    // EFFECTS: load game history from data if loadGame button pressed
     private void setUpLoadGameButton() {
         loadGameHistoryButton.addActionListener(new ActionListener() {
             @Override
@@ -111,6 +119,7 @@ public class MenuPanel extends JPanel {
         });
     }
 
+    // EFFECTS: save game history if button pressed
     private void setUpSaveGameButton() {
         saveGameHistoryButton.addActionListener(new ActionListener() {
             @Override
@@ -120,6 +129,7 @@ public class MenuPanel extends JPanel {
         });
     }
 
+    // EFFECTS: create and show history sorted by time to solve if button pressed
     private void setUpViewHistoryByTimeToSolveButton() {
         viewHistoryByTimeToSolveButton.addActionListener(new ActionListener() {
             @Override
@@ -130,6 +140,7 @@ public class MenuPanel extends JPanel {
         });
     }
 
+    // EFFECTS: create and show history sorted by date if button pressed
     private void setUpViewHistoryByDateButton() {
         viewHistoryByDateButton.addActionListener(new ActionListener() {
             @Override
@@ -140,6 +151,7 @@ public class MenuPanel extends JPanel {
         });
     }
 
+    // EFFECTS: start new game in new panel if button pressed
     private void setUpNewGameButton() {
         newGameButton.addActionListener(new ActionListener() {
             @Override

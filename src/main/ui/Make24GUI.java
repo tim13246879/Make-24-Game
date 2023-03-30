@@ -1,21 +1,19 @@
 package ui;
 
-import model.Game;
 import model.GameHistory;
 
 import javax.swing.*;
 import java.awt.*;
 
+// Represents the frame that holds all the panels
 public class Make24GUI {
 
-    private Game game;
     private JFrame frame;
     private JPanel panelCont;
     private CardLayout cl;
     private GameHistory gameHistory;
 
-
-
+    // EFFECTS: construct main frame and add card layout panel.
     public Make24GUI() {
         frame = new JFrame("Make 24!");
         panelCont = new JPanel();
@@ -23,7 +21,6 @@ public class Make24GUI {
         panelCont.setLayout(cl);
 
         gameHistory = new GameHistory();
-
 
         panelCont.add(new MenuPanel(cl, panelCont, gameHistory), "menu");
         cl.show(panelCont, "menu");
@@ -35,13 +32,6 @@ public class Make24GUI {
 
 
     }
-
-//    private void initializeFrame() {
-//        add(menuPanel, BorderLayout.CENTER);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        pack();
-//        setVisible(true);
-//    }
 
 
     public static void main(String[] args) {

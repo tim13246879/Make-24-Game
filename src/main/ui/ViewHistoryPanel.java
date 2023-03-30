@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+// Represents a panel that is used to view history
 public abstract class ViewHistoryPanel extends JPanel {
 
     private JButton backToMenu;
@@ -16,6 +16,7 @@ public abstract class ViewHistoryPanel extends JPanel {
     private JPanel panelCont;
     private GameHistory gameHistory;
 
+    // EFFECTS: construct panel with buttons and display game history as labels
     public ViewHistoryPanel(CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.cl = cl;
         this.panelCont = panelCont;
@@ -27,14 +28,18 @@ public abstract class ViewHistoryPanel extends JPanel {
         displayHistory();
     }
 
+    // EFFECTS: sort games with either date of time to solve
     public abstract void sortGames();
 
+    // EFFECTS: display all games in game history
     private void displayHistory() {
         for (Game g: gameHistory.getGames()) {
             add(new JLabel(g.getSolution() + " || " + g.getTimeToSolve() + " seconds" + " || " + g.getDateTime()));
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: add button to return to main menu
     private void addBackToMenuFunction() {
         backToMenu.addActionListener(new ActionListener() {
             @Override

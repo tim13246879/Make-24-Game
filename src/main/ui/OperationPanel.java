@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents panel where arithmetic operations take place
 public class OperationPanel extends JPanel {
 
     private JButton add;
@@ -23,6 +24,7 @@ public class OperationPanel extends JPanel {
     private Double resultNumber;
     private EndOfGamePanel endScreen;
 
+    // EFFECTS: Construct panel with list of pressed and unpressed buttons and converts them into numbers
     public OperationPanel(CardLayout cl, JPanel panelCont, List<JButton> selectedButtons,
                           List<JButton> remainingButtons, EndOfGamePanel endScreen) {
         this.cl = cl;
@@ -40,7 +42,8 @@ public class OperationPanel extends JPanel {
 
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: add functions to all buttons
     private void addAllButtonFunctions() {
         addButtonFunctions(add);
         addButtonFunctions(subtract);
@@ -48,12 +51,14 @@ public class OperationPanel extends JPanel {
         addButtonFunctions(divide);
     }
 
+    // EFFECTS: turn list of buttons into list of numbers
     private void buttonsToNumbers() {
         for (JButton b : remainingButtons) {
             remainingNumbers.add(Double.parseDouble(b.getText()));
         }
     }
 
+    // EFFECTS: Carry out arithmetic with button and selected numbers.
     private void addButtonFunctions(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
@@ -73,6 +78,7 @@ public class OperationPanel extends JPanel {
         });
     }
 
+    // EFFECTS: display the next numbers to be operated on after this operation
     private void displayNextNumbers() {
         if (remainingNumbers.size() == 3) {
             endScreen.setThreeRemainingNumbers(remainingNumbers);
@@ -93,6 +99,8 @@ public class OperationPanel extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: instantiate all buttons and add them to this panel
     private void setupButtons() {
         add = new JButton("+");
         subtract = new JButton("-");

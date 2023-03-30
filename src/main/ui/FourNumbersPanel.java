@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents panel when displaying all four numbers at beginning
 public class FourNumbersPanel extends JPanel {
     private JButton n1;
     private JButton n2;
@@ -24,6 +25,7 @@ public class FourNumbersPanel extends JPanel {
     private EndOfGamePanel endScreen;
 
 
+    // EFFECTS: construct panel with buttons and start new game
     public FourNumbersPanel(CardLayout cl, JPanel panelCont, GameHistory gameHistory) {
         this.cl = cl;
         this.panelCont = panelCont;
@@ -37,6 +39,8 @@ public class FourNumbersPanel extends JPanel {
         endScreen.setStartTime();
     }
 
+    // MODIFIES: n1, n2, n3, n4
+    // EFFECTS: add action listener to all functions
     private void addFunctionForAllButtons() {
         addButtonFunctions(n1);
         addButtonFunctions(n2);
@@ -44,6 +48,8 @@ public class FourNumbersPanel extends JPanel {
         addButtonFunctions(n4);
     }
 
+    // MODIFIES: n1, n2, n3, n4, this
+    // EFFECTS: instantiate buttons
     private void initializeButtons() {
         n1 = new JButton(Integer.toString(game.getN1()));
         n2 = new JButton(Integer.toString(game.getN2()));
@@ -52,6 +58,8 @@ public class FourNumbersPanel extends JPanel {
         addBackToMenuButton();
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a button that takes user back to main menu
     private void addBackToMenuButton() {
         JButton backToMenu = new JButton("Try another problem (back to menu)");
         add(backToMenu);
@@ -64,6 +72,8 @@ public class FourNumbersPanel extends JPanel {
         });
     }
 
+    // MODIFIES: remainingButtons
+    // EFFECTS: Add all number buttons to remainingButtons
     private void addAllButtonsToRemainingButtons() {
         remainingButtons.add(n1);
         remainingButtons.add(n2);
@@ -71,12 +81,17 @@ public class FourNumbersPanel extends JPanel {
         remainingButtons.add(n4);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add all buttons to panel
     private void addButtonsToPanel() {
-        for (JButton b: remainingButtons) {
+        for (JButton b : remainingButtons) {
             add(b);
         }
     }
 
+    // EFFECTS: take in a button that is pressed. If it is the first one to be pressed in this panel, turn it invisible
+    // and add text to verify it has been pressed. Otherwise, if it is the second one that is pressed, show operation
+    // panel.
     private void addButtonFunctions(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
@@ -97,13 +112,13 @@ public class FourNumbersPanel extends JPanel {
         });
     }
 
-
-
+    // MODIFIES: this
+    // EFFECTS: reset panel to what it was before any button was pressed
     private void resetPanel() {
-        for (JButton b: selectedButtons) {
+        for (JButton b : selectedButtons) {
             b.setVisible(true);
         }
-        for (JLabel l: chosenNumbers) {
+        for (JLabel l : chosenNumbers) {
             l.setVisible(false);
         }
         selectedButtons = new ArrayList<>();
