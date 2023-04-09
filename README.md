@@ -91,3 +91,11 @@ Game history sorted by time to solve\
 Thu Apr 06 16:39:34 PDT 2023\
 Game history sorted by date
 
+## Phase 4: Task 3
+
+Potential refactoring:
+
+1. Create an abstract class called NumbersPanel, and have FourNumbersPanel, ThreeNumbersPanel and TwoNumbersPanel extend
+   it. This reduces a lot of duplication in the code and allows for single point of control. Since the three classes all
+   access the same instance of EndOfGamePanel, the abstract class can have a protected EndOfGamePanel field, also
+   reducing coupling. 
