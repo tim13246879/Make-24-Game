@@ -98,4 +98,10 @@ Potential refactoring:
 1. Create an abstract class called NumbersPanel, and have FourNumbersPanel, ThreeNumbersPanel and TwoNumbersPanel extend
    it. This reduces a lot of duplication in the code and allows for single point of control. Since the three classes all
    access the same instance of EndOfGamePanel, the abstract class can have a protected EndOfGamePanel field, also
-   reducing coupling. 
+   reducing coupling.
+2. This isn't shown on the UML diagram, but all JPanel objects (classes that end with "Panel") depend on a single
+   instance of CardLayout and another instance of JPanel. These two objects allow the GUI to switch between the panels
+   when buttons are pressed. Currently, this is unsatisfactory as the two objects are passed around the program as
+   parameters in each class's constructor. A possible solution to this is to create an abstract class that has the two
+   instantiated objects as protected fields. All JPanels can then extend it (except ViewHistoryByDatePanel and
+   ViewHistoryByTimeToSolvePanel since ViewHistoryPanel would extend it) to gain access to the two objects. 
