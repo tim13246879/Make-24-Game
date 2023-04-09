@@ -76,3 +76,18 @@ I solve.
 - (*SAVE DATA*) from start menu, click "save game history".
 - (*RELOAD DATA*) from start menu, click "load game history".
 
+## Phase 4: Task 2
+
+Thu Apr 06 16:35:36 PDT 2023\
+Game added to game history\
+Thu Apr 06 16:36:14 PDT 2023\
+Game added to game history\
+Thu Apr 06 16:37:25 PDT 2023\
+Game added to game history\
+Thu Apr 06 16:39:21 PDT 2023\
+Game added to game history\
+Thu Apr 06 16:39:23 PDT 2023\
+Game history sorted by time to solve\
+Thu Apr 06 16:39:34 PDT 2023\
+Game history sorted by date
+

@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Game;
 import model.GameHistory;
 import persistence.JsonReader;
@@ -104,6 +106,9 @@ public class MenuPanel extends JPanel {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.toString());
+                }
                 exit(0);
             }
         });

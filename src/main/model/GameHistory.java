@@ -23,6 +23,7 @@ public class GameHistory implements Writable {
     // EFFECTS: Add game to game history
     public void addGame(Game g) {
         games.add(g);
+        EventLog.getInstance().logEvent(new Event("Game added to game history"));
     }
 
     // MODIFIES: this
@@ -31,6 +32,7 @@ public class GameHistory implements Writable {
     public void sortHistoryByDate() {
         games.sort(Comparator.comparing(Game::getDateTime));
         Collections.reverse(games);
+        EventLog.getInstance().logEvent(new Event("Game history sorted by date"));
     }
 
     // MODIFIES: this
@@ -39,6 +41,7 @@ public class GameHistory implements Writable {
     public void sortHistoryByTimeToSolve() {
         games.sort(Comparator.comparing(Game::getTimeToSolve));
         Collections.reverse(games);
+        EventLog.getInstance().logEvent(new Event("Game history sorted by time to solve"));
     }
 
     // EFFECTS: getter for list of games in game history
