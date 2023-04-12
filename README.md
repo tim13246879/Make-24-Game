@@ -78,6 +78,9 @@ I solve.
 
 ## Phase 4: Task 2
 
+Representative sample of events (after user plays a few games, saves 4 games to game history, and views game history in
+both available ways):
+
 Thu Apr 06 16:35:36 PDT 2023\
 Game added to game history\
 Thu Apr 06 16:36:14 PDT 2023\
